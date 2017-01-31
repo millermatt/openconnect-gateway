@@ -78,4 +78,4 @@ Q: Should I worry about "DTLS handshake timed out" and "DTLS handshake failed: R
 A: Nope
 
 Q: !@#$%^
-A: Use the Virtual Box Manager to shut down the "vpn" vm, run "./networking-config.sh off", and then run "./connect.sh ..." again.
+A: Use the Virtual Box Manager to shut down the "vpn" vm, run "./networking-config.sh off", and then follwo the steps above to connect again.
