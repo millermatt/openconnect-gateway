@@ -26,15 +26,6 @@ iptables -A FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 iptables -t nat -F POSTROUTING
 iptables -t nat -A POSTROUTING -o tun0 -j MASQUERADE
 
-# openconnect \
-#     -v \
-#     --csd-wrapper /vagrant/csd-wrapper.sh \
-#     --csd-user vagrant \
-#     --cafile /etc/ssl/certs/Comodo_Secure_Services_root.pem \
-#     --authgroup $LC_VPN_GROUP \
-#     -u $LC_VPN_USER \
-#     $LC_VPN_SERVER
-
 openconnect \
     -v \
     --csd-wrapper /vagrant/csd-wrapper.sh \
