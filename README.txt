@@ -52,14 +52,15 @@ Files
 connect.sh              - Runs in host OS.  Starts the VPN connection inside the VM.
 csd-wrapper.sh          - Runs in VM.       Used by the VPN connection software to handle VPN server commands.
 networking-config.sh    - Runs in host OS.  Configures host networking to send appropriate traffic through the VM.
+other-domains.txt       - Used in host OS.  Create this file add 1 domain or host name per line to have those domains and hosts routed through the vpn.
 Vagrantfile             - Runs in host OS.  Config file for Vagrant to create the VM
 vpn.sh                  - Runs in VM.       Called by connect.sh. Starts the VPN connection.
 
 
 FAQ
 ===
-Q: Why isn't DNS working?
-A: That's on the todo list. You can access servers by IP or add entries to your hosts file for known hosts. Running ./networking-config.sh will copy the resolv.conf file (as vpn-resolv.conf) from the vm to the same folder this readme file is in. You can copy that to the right places on the hosts system or extract the info from it and use it. I don't have an example of this yet.
+Q: How do I route additional domain or host traffic through the vpn?
+A: Create a file named "other-domains.txt" in the same folder as this readme file and list 1 domain or host name per line. Then run "./networking-config.sh on" again.
 
 Q: Why Vagrant/VirtualBox and not Docker?
 A: It can't be done with Docker on OSX due to limitations of Hyperkit. There is no way to directly access the docker "vm" from the host on OSX without going through specific ports. Port access happens at a higher level than we need to be to enable the proper routing. See "Known Limitations" at https://docs.docker.com/docker-for-mac/networking/

@@ -2,9 +2,10 @@
 
 if [[ "$1" == "off" ]]; then
     printf "Clearing VPN DNS config from host..."
+    sudo sh -c "grep -l -s \"#@OPENCONNECT_GATEWAY@\" /etc/resolver/* | xargs rm"
     echo done.
     printf "Removing VPN host routes..."
-    VPN_ADDRESS_BLOCK="$(netstat -nr | grep -o \"^\(\d\+\.\d\+\)\s\+\(10\.28\.28\.28\)\"|cut -d\" \" -f 1).0.0/16"
+    VPN_ADDRESS_BLOCK=$(netstat -nr | grep -o "^\(\d\+\.\d\+\)\s\+\(10\.28\.28\.28\)"|cut -d" " -f 1)".0.0/16"
     sudo route -n delete -net $VPN_ADDRESS_BLOCK 10.28.28.28 > /dev/null 2>&1
     echo done.
 elif [[ "$1" == "on" ]]; then
@@ -19,7 +20,28 @@ elif [[ "$1" == "on" ]]; then
     sudo route -n add -net $VPN_ADDRESS_BLOCK 10.28.28.28 > /dev/null 2>&1
     echo done.
 
-    # TODO - use vpn-resolv.conf to set up DNS for the VPN on the host
+    # Configure DNS
+    echo Configuring host DNS...
+    RESOLV_DOMAINS=($(cat vpn-resolv.conf | grep "domain\|search"|cut -d" " -f 2))
+    if [ -f other-domains.txt ]
+    then
+        CUSTOM_DOMAINS=($(cat other-domains.txt | tr "\n" " "))
+    else
+        CUSTOM_DOMAINS=()
+    fi
+
+    DOMAINS=("${RESOLV_DOMAINS[@]}" "${CUSTOM_DOMAINS[@]}")
+    NAMESERVERS=$(cat vpn-resolv.conf | grep nameserver)
+
+    mkdir -p /etc/resolver
+    for domain in "${DOMAINS[@]}"
+    do
+        echo "Setting DNS servers for ${domain}"
+        sudo rm -rf /etc/resolver/$domain
+        sudo sh -c "echo \"#@OPENCONNECT_GATEWAY@\n$NAMESERVERS\" > /etc/resolver/$domain"
+    done
+    echo Configuring host DNS...done.
+
 else
     echo "Use: networking-config.sh <on|off>"
 fi

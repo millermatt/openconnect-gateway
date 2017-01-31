@@ -1,3 +1,4 @@
 .vagrant
 vpn-address-block.txt
 vpn-resolv.conf
+other-domains.txt
