@@ -58,7 +58,7 @@ vpn.sh                  - Runs in VM.       Called by connect.sh. Starts the VPN
 FAQ
 ===
 Q: Why isn't DNS working?
-A: That's on the todo list. You can access servers by IP or add an entries to your hosts file for known hosts. Running ./networking-config.sh will copy the resolv.conf file (as vpn-resolv.conf) from the vm to the same folder this readme file is in. You can copy that to the right places on the hosts system or extract the info from it and use it. I don't have an example of this yet.
+A: That's on the todo list. You can access servers by IP or add entries to your hosts file for known hosts. Running ./networking-config.sh will copy the resolv.conf file (as vpn-resolv.conf) from the vm to the same folder this readme file is in. You can copy that to the right places on the hosts system or extract the info from it and use it. I don't have an example of this yet.
 
 Q: Why Vagrant/VirtualBox and not Docker?
 A: It can't be done with Docker on OSX due to limitations of Hyperkit. There is no way to directly access the docker "vm" from the host on OSX without going through specific ports. Port access happens at a higher level than we need to be to enable the proper routing. See "Known Limitations" at https://docs.docker.com/docker-for-mac/networking/
