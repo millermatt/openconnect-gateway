@@ -2,9 +2,8 @@
 == Connect to a VPN without routing everything through the VPN ==
 
 TL;DR
-# Connect to vpn
+# Connect to vpn. If you get 2 password prompts then enter your generated RSA token at the second password prompt.
 ./connect.sh --user=vpnuser --group=vpngroup vpnserver.mycompany.com
-    - If you get 2 password prompts then enter your generated RSA token at the second password prompt.
 # Route vpn network traffic through vm
 ./networking-config.sh
 
