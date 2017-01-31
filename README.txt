@@ -77,3 +77,5 @@ A: Use the Virtual Box Manager to shut down the VM and then run ./connect.sh aga
 Q: Should I worry about "DTLS handshake timed out" and "DTLS handshake failed: Resource temporarily unavailable, try again." messages?
 A: Nope
 
+Q: !@#$%^
+A: Use the Virtual Box Manager to shut down the "vpn" vm, run "./networking-config.sh off", and then run "./connect.sh ..." again.
