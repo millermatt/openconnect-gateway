@@ -69,7 +69,7 @@ A: From the folder this README.txt file is in: $ vagrant ssh
 Q: What if nothing seems to happen for a while after the VM boots up, and then I get the message "ssh_exchange_identification: Connection closed by remote host"?
 A: Try again
 
-Q: My hosts resumed from sleep and now everything is frozen. What now?
+Q: My host resumed from sleep and now everything is frozen. What now?
 A: Use the Virtual Box Manager to shut down the VM and then run ./connect.sh again.
 
 Q: Should I worry about "DTLS handshake timed out" and "DTLS handshake failed: Resource temporarily unavailable, try again." messages?
