@@ -25,7 +25,7 @@ Install VirtualBox and the Virtual Box Extension Pack (same page): https://www.v
 2. Connect the VM to the vpn: 
 
 ```bash
-$ ./connect.sh (-u|-user)=vpnuser (-g|--group)=vpngroup vpn.mycompany.com
+$ ./connect.sh (-u|--user)=vpnuser (-g|--group)=vpngroup vpn.mycompany.com
 ```
 
 Notes:
