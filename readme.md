@@ -20,9 +20,9 @@ Install VirtualBox and the Virtual Box Extension Pack (same page): https://www.v
 
 ### To connect
 
-1. Open a terminal and cd to the folder this README.txt file is in.
+1) Open a terminal and cd to the folder this README.txt file is in.
 
-2. Connect the VM to the vpn: 
+2) Connect the VM to the vpn: 
 
 ```bash
 $ ./connect.sh (-u|--user)=vpnuser (-g|--group)=vpngroup vpn.mycompany.com
@@ -38,9 +38,9 @@ Notes:
 - After connecting the vpn connection will be running in the foreground of the terminal and show "keep alive" messages and "handshake failed" messages. You can ignore them.
 - Hit CTRL+C to end the vpn connection
 
-3. Open a second terminal and cd to this folder
+3) Open a second terminal and cd to this folder
 
-4. Configure host networking to route appropriate traffic through the VM:
+4) Configure host networking to route appropriate traffic through the VM:
 
 ```bash
 $ ./networking-config.sh on
@@ -52,9 +52,9 @@ Notes:
 
 
 ### To disconnect
-1. CTRL+C in the running VPN terminal
+1) CTRL+C in the running VPN terminal
 
-2. Optionally reset networking:
+2) Optionally reset networking:
 
 ```bash
 $ ./networking-config.sh off
