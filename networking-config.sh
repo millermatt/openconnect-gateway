@@ -33,7 +33,7 @@ elif [[ "$1" == "on" ]]; then
     DOMAINS=("${RESOLV_DOMAINS[@]}" "${CUSTOM_DOMAINS[@]}")
     NAMESERVERS=$(cat vpn-resolv.conf | grep nameserver)
 
-    mkdir -p /etc/resolver
+    sudo mkdir -p /etc/resolver
     for domain in "${DOMAINS[@]}"
     do
         echo "Setting DNS servers for ${domain}"
