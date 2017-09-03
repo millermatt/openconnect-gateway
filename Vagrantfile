@@ -6,10 +6,12 @@ Vagrant.configure("2") do |config|
   config.vm.provider "virtualbox" do |p|
     p.name = "vpn"
     p.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
+    p.customize ["modifyvm", :id, "--usb", "off", "--usbehci", "off"]
+    p.customize ["modifyvm", :id, "--nictype1", "virtio"]
   end
 
   # The VM will have a static IP of 10.28.28.28
-  config.vm.network "private_network", ip: "10.28.28.28"
+  config.vm.network "private_network", ip: "10.28.28.28", nic_type: "virtio"
 
   config.vm.hostname = "vpn"
   config.vm.post_up_message = "usage instructions: see the README.txt file"

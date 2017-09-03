@@ -1,6 +1,6 @@
 #!/bin/sh
 
-function showUse {
+showUse () {
     echo "Use: connect.sh --user=mario --group=vpnusers vpn.mycompany.com"
     exit 1
 }
